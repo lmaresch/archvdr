@@ -1,0 +1,129 @@
+[submodule "firmware/dvbsky-firmware"]
+	path = firmware/dvbsky-firmware
+	url = https://aur.archlinux.org/dvbsky-firmware.git
+[submodule "fonts/ttf-vdrsymbols"]
+	path = fonts/ttf-vdrsymbols
+	url = https://aur.archlinux.org/ttf-vdrsymbols.git
+[submodule "fonts/ttf-sourcesanspro"]
+	path = fonts/ttf-sourcesanspro
+	url = https://aur.archlinux.org/ttf-sourcesanspro.git
+[submodule "fonts/ttf-teletext2"]
+	path = fonts/ttf-teletext2
+	url = https://aur.archlinux.org/ttf-teletext2.git
+[submodule "tools/irctl"]
+	path = tools/irctl
+	url = https://aur.archlinux.org/irctl.git
+[submodule "tools/irmplircd"]
+	path = tools/irmplircd
+	url = https://aur.archlinux.org/irmplircd.git
+[submodule "tools/minisatip"]
+	path = tools/minisatip
+	url = https://aur.archlinux.org/minisatip.git
+[submodule "tools/vdrpbd"]
+	path = tools/vdrpbd
+	url = https://aur.archlinux.org/vdrpbd.git
+[submodule "tools/vdrctl"]
+	path = tools/vdrctl
+	url = https://aur.archlinux.org/vdrctl.git
+[submodule "tools/oscam"]
+	path = tools/oscam
+	url = https://aur.archlinux.org/oscam-svn.git
+[submodule "vdr"]
+	path = vdr
+	url = https://aur.archlinux.org/vdr.git
+[submodule "vdr-api"]
+	path = vdr-api
+	url = https://aur.archlinux.org/vdr-api.git
+[submodule "plugins/vdr-skinelchihd"]
+	path = plugins/vdr-skinelchihd
+	url = https://github.com/lmaresch/vdr-skinelchihd.git
+[submodule "plugins/vdr-ciplus"]
+	path = plugins/vdr-ciplus
+	url = https://github.com/lmaresch/vdr-ciplus.git
+[submodule "plugins/vdr-nordlichtsepg"]
+	path = plugins/vdr-nordlichtsepg
+	url = https://github.com/lmaresch/vdr-nordlichtsepg.git
+[submodule "deps/libdvbcsa"]
+	path = deps/libdvbcsa
+	url = https://aur.archlinux.org/libdvbcsa.git
+[submodule "deps/linuxtv-dvb-apps"]
+	path = deps/linuxtv-dvb-apps
+	url = https://aur.archlinux.org/linuxtv-dvb-apps.git
+[submodule "deps/xlogin"]
+	path = deps/xlogin
+	url = https://aur.archlinux.org/xlogin.git
+[submodule "plugins/vdr-cdplayer"]
+	path = plugins/vdr-cdplayer
+	url = https://aur.archlinux.org/vdr-cdplayer.git
+[submodule "plugins/vdr-cecremote"]
+	path = plugins/vdr-cecremote
+	url = https://aur.archlinux.org/vdr-cecremote.git
+[submodule "plugins/vdr-ddci2"]
+	path = plugins/vdr-ddci2
+	url = https://aur.archlinux.org/vdr-ddci2.git
+[submodule "plugins/vdr-dvbapi"]
+	path = plugins/vdr-dvbapi
+	url = https://aur.archlinux.org/vdr-dvbapi.git
+[submodule "plugins/vdr-externalplayer"]
+	path = plugins/vdr-externalplayer
+	url = https://aur.archlinux.org/vdr-externalplayer.git
+[submodule "plugins/vdr-femon"]
+	path = plugins/vdr-femon
+	url = https://aur.archlinux.org/vdr-femon.git
+[submodule "plugins/vdr-fritzbox"]
+	path = plugins/vdr-fritzbox
+	url = https://aur.archlinux.org/vdr-fritzbox.git
+[submodule "plugins/vdr-iptv"]
+	path = plugins/vdr-iptv
+	url = https://aur.archlinux.org/vdr-iptv.git
+[submodule "plugins/vdr-markad"]
+	path = plugins/vdr-markad
+	url = https://aur.archlinux.org/vdr-markad.git
+[submodule "plugins/vdr-mp3"]
+	path = plugins/vdr-mp3
+	url = https://aur.archlinux.org/vdr-mp3.git
+[submodule "vdr-neutrinoepg"]
+	path = vdr-neutrinoepg
+	url = https://aur.archlinux.org/vdr-neutrinoepg.git
+[submodule "plugins/vdr-neutrinoepg"]
+	path = plugins/vdr-neutrinoepg
+	url = https://aur.archlinux.org/vdr-neutrinoepg.git
+[submodule "plugins/vdr-mpv"]
+	path = plugins/vdr-mpv
+	url = https://aur.archlinux.org/vdr-mpv.git
+[submodule "plugins/vdr-noepg"]
+	path = plugins/vdr-noepg
+	url = https://aur.archlinux.org/vdr-noepg.git
+[submodule "plugins/vdr-play"]
+	path = plugins/vdr-play
+	url = https://aur.archlinux.org/vdr-play.git
+[submodule "plugins/vdr-radio"]
+	path = plugins/vdr-radio
+	url = https://aur.archlinux.org/vdr-radio.git
+[submodule "plugins/vdr-rssreader"]
+	path = plugins/vdr-rssreader
+	url = https://aur.archlinux.org/vdr-rssreader.git
+[submodule "plugins/vdr-satip"]
+	path = plugins/vdr-satip
+	url = https://aur.archlinux.org/vdr-satip.git
+[submodule "plugins/vdr-sc"]
+	path = plugins/vdr-sc
+	url = https://aur.archlinux.org/vdr-sc.git
+[submodule "plugins/vdr-skinenigmang"]
+	path = plugins/vdr-skinenigmang
+	url = https://aur.archlinux.org/vdr-skinenigmang.git
+[submodule "plugins/vdr-skinsoppalusikka"]
+	path = plugins/vdr-skinsoppalusikka
+	url = https://aur.archlinux.org/vdr-skinsoppalusikka.git
+[submodule "plugins/vdr-softhdcuvid"]
+	path = plugins/vdr-softhdcuvid
+	url = https://aur.archlinux.org/vdr-softhdcuvid.git
+[submodule "plugins/vdr-streamdev"]
+	path = plugins/vdr-streamdev
+	url = https://aur.archlinux.org/vdr-streamdev.git
+[submodule "plugins/vdr-wirbelscan"]
+	path = plugins/vdr-wirbelscan
+	url = https://aur.archlinux.org/vdr-wirbelscan.git
+[submodule "plugins/vdr-xineliboutput"]
+	path = plugins/vdr-xineliboutput
+	url = https://aur.archlinux.org/xineliboutput.git
