@@ -127,3 +127,6 @@
 [submodule "plugins/vdr-xineliboutput"]
 	path = plugins/vdr-xineliboutput
 	url = https://aur.archlinux.org/xineliboutput.git
+[submodule "tools/vdr-xorg"]
+	path = tools/vdr-xorg
+	url = https://aur.archlinux.org/vdr-xorg.git
