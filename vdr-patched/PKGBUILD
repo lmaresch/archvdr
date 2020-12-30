@@ -1,0 +1,163 @@
+# This PKGBUILD is part of the VDR4Arch project [https://github.com/vdr4arch]
+
+# Maintainer: Manuel Reimer <manuel.reimer@gmx.de>
+pkgbase=vdr
+pkgname=(vdr-patched vdr-patched-examples)
+pkgver=2.4.6
+_vdrapi=2.4.6
+pkgrel=1
+url="http://tvdr.de/"
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
+license=('GPL2')
+makedepends=('fontconfig' 'libcap' 'libjpeg-turbo' 'libsystemd' 'perl' 'ttf-font' 'systemd' 'ncurses')
+source=("http://www.tvdr.de/ftp/${pkgbase}-${pkgver}.tar.bz2"
+        'vdr-MainMenuHooks.patch'
+        '00-vdr.conf' 
+        '50-hello.conf' 
+        '50-pictures.conf'
+        '60-create-dvb-device-units.rules'
+        'gen-sddropin'
+        'shutdown.sh'
+        'shutdown-wrapper.c'
+        'vdr.service'
+        'vdr.sysuser'
+        "http://www.saunalahti.fi/~rahrenbe/vdr/patches/${pkgbase}-${pkgver}-avcdescriptor.patch.gz"
+        "http://www.saunalahti.fi/~rahrenbe/vdr/patches/${pkgbase}-${pkgver}-editrecording.patch.gz"
+        "http://www.saunalahti.fi/~rahrenbe/vdr/patches/${pkgbase}-${pkgver}-lcn-support-v2.patch.gz"
+        "http://www.saunalahti.fi/~rahrenbe/vdr/patches/${pkgbase}-${pkgver}-menuselection.patch.gz"
+        "http://www.saunalahti.fi/~rahrenbe/vdr/patches/${pkgbase}-${pkgver}-tpid.patch.gz"
+        "http://www.saunalahti.fi/~rahrenbe/vdr/patches/${pkgbase}-${pkgver}-resumereset.patch.gz"
+        "http://www.saunalahti.fi/~rahrenbe/vdr/patches/${pkgbase}-${pkgver}-networkname.patch.gz"
+        'vdr-2.4.4-camtweaks-2.4.1.patch'
+        'vdr-2.4.4-camtweaks-2.4.1_scaForceNewCat.patch')
+
+sha512sums=('bed8b7740a97b681cf4273c01b6ce80046c1e5914c06d12cffc46fdca615331d0e97771ec09697cf72897583fcf272d83b6bf188ef476715cd0c0c5fd4c5e9d4'
+            '355600bcb50ae06d13b48eef9814586d50aec40bf5243a8ff6bb1f344e68cef23981675330a54b3318ea71b5195c2e33b8f1e40e0445d1a6957cf19717659605'
+            '293530170c715e974d00a92edd81ab3b6ab3b98ad969a76dd80dd24a1fad6cfaf4e290b9b4a2b04c67c9c985b89ace83a9763d602f12899184ef8515c77970e0'
+            'ad3ad51e2da672514f9ab80ed00b5e3165297bb6646f2e7257b14401001afdc49fa8ca71648d9498958084f2d255a8fe6d07a4c6b558a9422b217d9609e05568'
+            'e50fffccd40a33c852ba8141c73b893dc39e046e9ad1d71f3efd791c06e34e9d6bab096b1a12eccfc6c2f5ad897173aef60937266eb6988191c667a6aa6ca748'
+            'c8aacc7f0116b5362487bafda91fd803b1fe26e1762ae5792b260b05a95500bcae3a18eaf0ac539cdc91d93715c561a32533b478c6e68716bb573d2efcd46937'
+            '7cdb4388fbf69403cfecbaf6f33e6c5cd0d753ee48ec8fb2a7474d17dd221aba972a2db44697b574f998d21a0b24f5791ebd9852e87a224db4c924bc4d919ecc'
+            '708fb031908b3bbcaeece8f86687388eb4eb85ea02e203e9da28eb0beb5bebf1b55cf6f8d4c41e4033846a4cff2f3268eddabc52de540b591aa76576478cf042'
+            'dcee75eea04f9204ea814360e9669713632cfb165558082ea8bb21eb62ed30e511e6928a86860d9c339538c24df6e67ebdb723a5582a6ae6b94ddfbfcd40e4ec'
+            'ef169380f9ba1d0578577b7bfa1040f30587a0b3bcde723923433b22bcb32c79e090ba441b45e11ca262fd182e4b552f6c2d9481634767ce8a1c0d39a295619a'
+            'e232348f34924b42444b095ae0c657ea3f6aee3e414da2a8ff31be499faddcdbb8c47a5aa2d0530d423d35eb2bfe0f279648bff4a448210a5f0351b712fc4230'
+            'dd9184f874a7dc3817980b1b18361ea7419c882ff253f6b4c5cfcd136efe22fb6276c56ca8cbf56c1d0237305eda8b2aaa23fec6c32ed3c808c17a788b8acc76'
+            '0935fdbe6b557c8b03396ff31021b35758a040f297315f39bdf605961a8ad77897884b527e2655e36ff8241e06cd1b2592c3bd0be09e78434263e43e85368e86'
+            '93077f0c5686ea7f005e3ecbc5878831b7c6048882f081d1a5208e5c039a05879801eb3629730420799532716da4b2c56c900e6c3da99d85623e5376dbd01004'
+            '62238c43daba749aa27c2f3dbf11110614a808bda7f2662b7b3c178711ec6903a1086620151668fbf7765b16d599fdd09424591df14d7e0d316057d9dd60bdde'
+            'c78f785453a925c10fa58cf68c7fa7502c5de1614799b7d775a795e8b12142daed0b6a343836512b50024ed7a2a41ad0e329b86a7fa81a0a4f323091155be3d9'
+            'a25668e7224ff5471effa70f08ec994e5edacf32ab11644c4fc44e34577eebe615654430ab8531c98e07ab7c23dcfe972cd562f54c94453afe7424fcc535b7eb'
+            'f1d3a315d30e425f04e051e179b44faf1612e9315e6de8580e2a60d56d006a451dc201cac1c137d8647eb3d6380be026365af3399a4e220ea7f2f4e192bd9dd5'
+            '4f5ef8aacb8645c324ec35a8c070fa5116bfe8d986930fe7387cd31e7bf2f6a93ed548c48438b41a30ad0030ca726d8bcb176cb7632d52c930b4941cd50be827'
+            '337ba59cfd9e0b90ff62a73ab4fc4853d98be20e6fc0553c461e0759ef298bccf8cb235e7f7a3b021c4e25970ef6ac73790f67bbc4e89eab0fe4e286a4c6c63c')
+
+prepare() {
+  cd "${srcdir}/${pkgbase}-${pkgver}"
+
+  echo 'CFLAGS      += -O3' > Make.config
+  echo 'CXXFLAGS    += -O3' >> Make.config
+  echo 'PREFIX       = /usr' >> Make.config
+  echo 'LIBDIR       = /usr/lib/vdr/plugins' >> Make.config
+  echo 'VDR_USER     = vdr' >> Make.config
+  echo 'SDNOTIFY     = 1' >> Make.config
+  echo 'LIRC_DEVICE  = /run/lirc/lircd' >> Make.config
+
+  # Custom extensions
+  patch -p1 -i "$srcdir/vdr-MainMenuHooks.patch"
+  gunzip "${srcdir}/${pkgbase}-${pkgver}-avcdescriptor.patch.gz"
+  gunzip "${srcdir}/${pkgbase}-${pkgver}-editrecording.patch.gz"
+  gunzip "${srcdir}/${pkgbase}-${pkgver}-lcn-support-v2.patch.gz"
+  gunzip "${srcdir}/${pkgbase}-${pkgver}-menuselection.patch.gz"
+  gunzip "${srcdir}/${pkgbase}-${pkgver}-tpid.patch.gz"
+  gunzip "${srcdir}/${pkgbase}-${pkgver}-resumereset.patch.gz"
+  gunzip "${srcdir}/${pkgbase}-${pkgver}-networkname.patch.gz"
+  patch -p1 -i "${srcdir}/${pkgbase}-${pkgver}-avcdescriptor.patch"
+  patch -p1 -i "${srcdir}/${pkgbase}-${pkgver}-editrecording.patch"
+  patch -p1 -i "${srcdir}/${pkgbase}-${pkgver}-lcn-support-v2.patch"
+  patch -p1 -i "${srcdir}/${pkgbase}-${pkgver}-menuselection.patch"
+  patch -p1 -i "${srcdir}/${pkgbase}-${pkgver}-tpid.patch"
+  patch -p1 -i "${srcdir}/${pkgbase}-${pkgver}-resumereset.patch"
+  patch -p1 -i "${srcdir}/${pkgbase}-${pkgver}-networkname.patch"
+  patch -p1 -i "${srcdir}/vdr-2.4.4-camtweaks-2.4.1.patch"
+  patch -p1 -i "${srcdir}/vdr-2.4.4-camtweaks-2.4.1_scaForceNewCat.patch"
+
+  # Don't install plugins with VDR
+  sed -i '/^install: /s/install-plugins //' Makefile
+}
+
+build() {
+  gcc -o shutdown-wrapper shutdown-wrapper.c
+
+  cd "${srcdir}/${pkgbase}-${pkgver}"
+  make
+}
+
+package_vdr-patched() {
+  pkgdesc="'open' digital satellite receiver and timer controlled video disk recorder"
+  depends=('fontconfig' 'libcap' 'libjpeg-turbo' 'libsystemd' 'perl' 'ttf-font')
+  optdepends=('lirc-utils: remote control support'
+              'vdr-xorg: To start X11')
+  replaces=('vdr' 'runvdr-extreme')
+  conflicts=('vdr' 'runvdr-extreme')
+  provides=("vdr-api=$_vdrapi")
+  install='vdr.install'
+  options=(emptydirs)
+  backup=('etc/vdr/conf.d/00-vdr.conf'
+          'var/lib/vdr/camresponses.conf'
+          'var/lib/vdr/channels.conf'
+          'var/lib/vdr/diseqc.conf'
+          'var/lib/vdr/keymacros.conf'
+          'var/lib/vdr/scr.conf'
+          'var/lib/vdr/sources.conf'
+          'var/lib/vdr/svdrphosts.conf')
+
+  # Ship this one empty so it's there even without plugin packages installed
+  mkdir -p "$pkgdir/etc/vdr/conf.avail"
+  # This one has to be shipped empty or some plugins (streamdev) fail to build
+  mkdir -p "$pkgdir/usr/lib/vdr/plugins"
+
+  install -Dm644 00-vdr.conf "$pkgdir/etc/vdr/conf.d/00-vdr.conf"
+  install -Dm644 60-create-dvb-device-units.rules "$pkgdir/usr/lib/udev/rules.d/60-create-dvb-device-units.rules"
+  install -Dm644 vdr.service "$pkgdir/usr/lib/systemd/system/vdr.service"
+
+  install -Dm754 shutdown-wrapper "$pkgdir/usr/lib/vdr/bin/shutdown-wrapper"
+  chgrp 666 "$pkgdir/usr/lib/vdr/bin/shutdown-wrapper"
+  chmod u+s "$pkgdir/usr/lib/vdr/bin/shutdown-wrapper"
+
+  install -Dm755 gen-sddropin "$pkgdir/usr/bin/vdr-gensddropin"
+  install -Dm755 shutdown.sh "$pkgdir/usr/lib/vdr/bin/shutdown.sh"
+
+  #Install sysuser config
+  install -Dm644 ${srcdir}/$pkgbase.sysuser "$pkgdir/usr/lib/sysusers.d/$pkgbase.conf"
+
+  cd "${srcdir}/${pkgbase}-${pkgver}"
+  mkdir -p "$pkgdir/var/lib/vdr"
+  make DESTDIR="${pkgdir}" install
+
+  mkdir -p "$pkgdir/usr/share/vdr/shutdown-hooks"
+
+  chown -R 666:666 "$pkgdir/srv/vdr"
+  chown -R 666:666 "$pkgdir/var/cache/vdr"
+  chown -R 666:666 "$pkgdir/var/lib/vdr"
+}
+
+package_vdr-patched-examples() {
+  pkgdesc="Plugins for vdr to show some possible features"
+  replaces=('vdr-examples')
+  conflicts=('vdr-examples')
+  depends=("vdr-api=${_vdrapi}" "gcc-libs" 'ncurses')
+  backup=("etc/vdr/conf.avail/"50-{epgtableid0,hello,osddemo,pictures,skincurses,status,svdrpdemo}.conf
+          "etc/vdr/conf.avail/"50-svc{cli,svr}.conf)
+
+  cd "${srcdir}/${pkgbase}-${pkgver}"
+  make DESTDIR="${pkgdir}" install-plugins
+
+  mkdir -p "$pkgdir/etc/vdr/conf.avail"
+  for i in hello pictures; do
+    install -Dm644 "${srcdir}/50-$i.conf" "$pkgdir/etc/vdr/conf.avail/50-$i.conf"
+  done
+  for i in epgtableid0 osddemo skincurses status svc{cli,svr} svdrpdemo; do
+    echo "[$i]" > "$pkgdir/etc/vdr/conf.avail/50-$i.conf"
+  done
+}
