@@ -63,7 +63,7 @@
 	url = https://aur.archlinux.org/vdr-ddci2.git
 [submodule "plugins/vdr-dvbapi"]
 	path = plugins/vdr-dvbapi
-	url = https://aur.archlinux.org/vdr-dvbapi.git
+	url = git@github.com:lmaresch/vdr-dvbapi.git
 [submodule "plugins/vdr-externalplayer"]
 	path = plugins/vdr-externalplayer
 	url = https://aur.archlinux.org/vdr-externalplayer.git
