@@ -5,7 +5,7 @@ pkgbase=vdr
 pkgname=(vdr-patched vdr-patched-examples)
 pkgver=2.4.6
 _vdrapi=2.4.6
-pkgrel=1
+pkgrel=3
 url="http://tvdr.de/"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
@@ -21,7 +21,9 @@ source=("http://www.tvdr.de/ftp/${pkgbase}-${pkgver}.tar.bz2"
         'shutdown-wrapper.c'
         'vdr.service'
         'vdr.sysuser'
-        'vdr-2.4.6-camtweaks-scaForceNewCat-avcdescriptor-editrecording-lcnSupportV2-menuselection-tpid-resumereset-networkname.patch')
+        "$pkgbase-$pkgver-clre-crash-fix.patch"
+        "$pkgbase-$pkgver-pute-epg-loading-fix.patch"
+        "$pkgbase-$pkgver-camtweaks-scaForceNewCat-avcdescriptor-editrecording-lcnSupportV2-menuselection-tpid-resumereset-networkname.patch")
 
 sha512sums=('bed8b7740a97b681cf4273c01b6ce80046c1e5914c06d12cffc46fdca615331d0e97771ec09697cf72897583fcf272d83b6bf188ef476715cd0c0c5fd4c5e9d4'
             '355600bcb50ae06d13b48eef9814586d50aec40bf5243a8ff6bb1f344e68cef23981675330a54b3318ea71b5195c2e33b8f1e40e0445d1a6957cf19717659605'
@@ -34,6 +36,8 @@ sha512sums=('bed8b7740a97b681cf4273c01b6ce80046c1e5914c06d12cffc46fdca615331d0e9
             'dcee75eea04f9204ea814360e9669713632cfb165558082ea8bb21eb62ed30e511e6928a86860d9c339538c24df6e67ebdb723a5582a6ae6b94ddfbfcd40e4ec'
             'ef169380f9ba1d0578577b7bfa1040f30587a0b3bcde723923433b22bcb32c79e090ba441b45e11ca262fd182e4b552f6c2d9481634767ce8a1c0d39a295619a'
             'e232348f34924b42444b095ae0c657ea3f6aee3e414da2a8ff31be499faddcdbb8c47a5aa2d0530d423d35eb2bfe0f279648bff4a448210a5f0351b712fc4230'
+            'f359cf214719c0375053bc241ff012c32ebc6b593759f7516cf85cbdbbc009b6a4bd979b7558a9320c764d705d19ed9615ac3a685aabe3e7db54f5d213ac6e83'
+            '6230fc144f7b23f1e0cf63a7c1716f80cc8a1d5f21461471c6b0cbafa8ce13b13b168c2c33457f3bcf7dfe1bb96dd8ce0563f7fbb13edd8bcb5cc218cba60fd2'
             'd6e6377406787321585c0406e64b47cb2701d9af61af6bd8614d32bc3a2933e66ed27cb5dc9c1538626c675f30ad5ea11efafafd8862671209b5fe561caf2404')
 
 prepare() {
@@ -49,7 +53,11 @@ prepare() {
 
   # Custom extensions
   patch -p1 -i "$srcdir/vdr-MainMenuHooks.patch"
-  patch -p1 -i "${srcdir}/vdr-2.4.6-camtweaks-scaForceNewCat-avcdescriptor-editrecording-lcnSupportV2-menuselection-tpid-resumereset-networkname.patch"
+  patch -p1 -i "${srcdir}/$pkgbase-$pkgver-camtweaks-scaForceNewCat-avcdescriptor-editrecording-lcnSupportV2-menuselection-tpid-resumereset-networkname.patch"
+
+    # Upstream fixes
+  patch -i "$srcdir/$pkgbase-$pkgver-clre-crash-fix.patch"
+  patch -i "$srcdir/$pkgbase-$pkgver-pute-epg-loading-fix.patch"
 
   # Don't install plugins with VDR
   sed -i '/^install: /s/install-plugins //' Makefile

@@ -3,6 +3,9 @@
 		{
 			"name": "archvdr",
 			"path": "."
+		},
+		{
+			"path": "../vdr-plugin-dvbapi"
 		}
 	],
 	"settings": {}
